@@ -1,0 +1,53 @@
+import 'package:dio/dio.dart';
+import 'dart:convert';
+import 'package:convert/convert.dart';
+import 'package:crypto/crypto.dart';
+
+Future<Map<String, dynamic>> getResult(String searchWords) async {
+  try {
+    var param = new Map<String, dynamic>();
+    var data = new Map<String, dynamic>();
+    data['search'] = searchWords;
+    param['data'] = data;
+    var dataStr = JsonEncoder().convert(data);
+
+    int l = new DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    var tsp = '${l}';
+    param['tsp'] = tsp;
+    var did = "imei868930029467866";
+    param["did"] = did;
+    param["dip"] = "2";
+    var dpi = "1920*1080";
+    param["dpi"] = dpi;
+    param["vid"] = "1";
+    var ukey = "";
+    param["ukey"] = ukey;
+
+    var token = '';
+    token += did;
+    token += dataStr;
+    token += tsp;
+    token += "12321";
+    print(token);
+
+    var content = new Utf8Encoder().convert(token);
+    var digest = md5.convert(content);
+    token = hex.encode(digest.bytes);
+    if (token.length >= 28) {
+      token = token.substring(3, 28);
+    }
+    param["token"] = token;
+    print(param);
+
+    Response response =
+        await Dio().post("http://api.ukon.ink/searchcontentList", data: param);
+//    Response response = await Dio().post("http://192.168.199.196:8900/laji", data: param);
+    print(response);
+    print(response.data);
+
+    return response.data;
+  } catch (e) {
+    print(e);
+  }
+  return null;
+}
