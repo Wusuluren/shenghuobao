@@ -24,6 +24,7 @@ dependencies:
   dio: ^2.1.10
   convert: ^2.1.1
   crypto: ^2.0.6
+  #  csv_utils: ^0.2.0
   #  flutter_html_view: ^0.5.11
   #  flutter_html_widget:
   #    git:
@@ -51,10 +52,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/home_icon_dry.png
-    - images/home_icon_recyclable.png
-    - images/home_icon_wet.png
-    - images/hone_icon_harmful.png
+    - assets/images/home_icon_dry.png
+    - assets/images/home_icon_recyclable.png
+    - assets/images/home_icon_wet.png
+    - assets/images/hone_icon_harmful.png
+    - assets/images/type_dry.png
+    - assets/images/type_recyclable.png
+    - assets/images/type_wet.png
+    - assets/images/type_harmful.png
+    - assets/data/api_csv1.csv
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
