@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
     garabgeClass = initGarabge(context, API_CSV1);
 
     return MaterialApp(
-      title: '垃圾分类指南',
+      title: '生活宝',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: '垃圾分类指南'),
+      home: MyHomePage(title: '生活宝'),
     );
   }
 }
