@@ -62,6 +62,10 @@ class ApiHttp1 implements GarabgeClass {
     return new SearchResult(GARABGE_ITEM_NONE);
   }
 
+  String getNextItemName(int itemId, int index) {}
+
+  int getItemCount(int itemId) {}
+
   String describe() {
     return "垃圾分类专家";
   }

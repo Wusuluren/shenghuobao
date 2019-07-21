@@ -19,6 +19,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  #国际化支持
+  flutter_localizations:
+    sdk: flutter
   #  webview_flutter: ^0.3.9+1
   flutter_html: ^0.10.4
   dio: ^2.1.10
@@ -51,16 +54,16 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/home_icon_dry.png
-    - assets/images/home_icon_recyclable.png
-    - assets/images/home_icon_wet.png
-    - assets/images/hone_icon_harmful.png
-    - assets/images/type_dry.png
-    - assets/images/type_recyclable.png
-    - assets/images/type_wet.png
-    - assets/images/type_harmful.png
-    - assets/data/api_csv1.csv
+  #  assets:
+  #    - assets/images/home_icon_dry.png
+  #    - assets/images/home_icon_recyclable.png
+  #    - assets/images/home_icon_wet.png
+  #    - assets/images/hone_icon_harmful.png
+  #    - assets/images/type_dry.png
+  #    - assets/images/type_recyclable.png
+  #    - assets/images/type_wet.png
+  #    - assets/images/type_harmful.png
+  #    - assets/data/api_csv1.csv
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

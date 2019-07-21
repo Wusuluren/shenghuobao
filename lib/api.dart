@@ -9,20 +9,28 @@ const API_HTTP1 = 2;
 abstract class GarabgeClass {
   Future<SearchResult> search(String words);
 
+  String getNextItemName(int itemId, int index);
+
+  int getItemCount(int itemId);
   String describe();
 }
 
 class SearchResult {
   int itemId;
   String itemName;
-  String itemAssets;
+  String itemEnName;
+
+//  String itemAssets;
   String content;
+  Color color;
 
   SearchResult(int itemId) {
     this.itemId = itemId;
     this.itemName = convertFromItemIdToName(itemId);
-    this.itemAssets = convertFromItemIdToAssets(itemId);
+    this.itemEnName = convertFromItemIdToEnName(itemId);
+//    this.itemAssets = convertFromItemIdToAssets(itemId);
     this.content = convertFromItemIdToContent(itemId);
+    this.color = convertFromItemIdToColor(itemId);
   }
 }
 

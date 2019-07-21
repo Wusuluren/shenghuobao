@@ -14,11 +14,12 @@ void logs(List<Object> objects, [String prefix = '']) {
   }
 }
 
-const GARABGE_ITEM_NONE = 0;
+const GARABGE_ITEM_EMPTY = 0;
 const GARABGE_ITEM_RECYCLABLE = 1;
 const GARABGE_ITEM_HARMFUL = 2;
 const GARABGE_ITEM_WET = 3;
 const GARABGE_ITEM_DRY = 4;
+const GARABGE_ITEM_NONE = 5;
 
 var _itemContentMap = {
   GARABGE_ITEM_NONE: '''
@@ -29,6 +30,7 @@ var _itemContentMap = {
 暂时没有查询到对应的垃圾分类
 </p>
   ''',
+  GARABGE_ITEM_EMPTY: '',
   GARABGE_ITEM_RECYCLABLE: '''
   <head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 <style> div p{font-size: 18px}</style></head><div class="js_everytype" style="margin: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255);">
@@ -68,9 +70,6 @@ var _itemContentMap = {
 </div>
 </div>
 <div class="more-box-new border-top" style="margin: 8px 0px 0px; padding: 8px 0px 0px; line-height: 22px; overflow: hidden; display: flex; -webkit-box-pack: justify; justify-content: space-between; border-top: 1px solid rgb(241, 241, 241); color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255);"></div>
-<p>
-<br/>
-</p>
   ''',
   GARABGE_ITEM_HARMFUL: '''
   <head><meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
@@ -105,9 +104,6 @@ var _itemContentMap = {
 </p>
 </div>
 </div>
-<p>
-<br/>
-</p>
   ''',
   GARABGE_ITEM_WET: '''
   <head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
@@ -139,9 +135,6 @@ var _itemContentMap = {
 </p>
 </div>
 </div>
-<p>
-<br/>
-</p>
   ''',
   GARABGE_ITEM_DRY: '''
   <head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
@@ -173,9 +166,6 @@ var _itemContentMap = {
 </p>
 </div>
 </div>
-<p>
-<br/>
-</p>
   ''',
 };
 
@@ -183,20 +173,22 @@ String convertFromItemIdToContent(int itemId) {
   return _itemContentMap[itemId];
 }
 
-var _assetsItemImageMap = {
-  GARABGE_ITEM_NONE: '',
-  GARABGE_ITEM_RECYCLABLE: 'assets/images/type_recyclable.png',
-  GARABGE_ITEM_HARMFUL: 'assets/images/type_harmful.png',
-  GARABGE_ITEM_WET: 'assets/images/type_wet.png',
-  GARABGE_ITEM_DRY: 'assets/images/type_dry.png',
-};
-
-String convertFromItemIdToAssets(int itemId) {
-  return _assetsItemImageMap[itemId];
-}
+//var _assetsItemImageMap = {
+//  GARABGE_ITEM_NONE: '',
+//  GARABGE_ITEM_EMPTY: '',
+//  GARABGE_ITEM_RECYCLABLE: 'assets/images/type_recyclable.png',
+//  GARABGE_ITEM_HARMFUL: 'assets/images/type_harmful.png',
+//  GARABGE_ITEM_WET: 'assets/images/type_wet.png',
+//  GARABGE_ITEM_DRY: 'assets/images/type_dry.png',
+//};
+//
+//String convertFromItemIdToAssets(int itemId) {
+//  return _assetsItemImageMap[itemId];
+//}
 
 var _itemNameMap = {
   GARABGE_ITEM_NONE: '未查询到对应的垃圾分类',
+  GARABGE_ITEM_EMPTY: '',
   GARABGE_ITEM_RECYCLABLE: '可回收垃圾',
   GARABGE_ITEM_HARMFUL: '有害垃圾',
   GARABGE_ITEM_WET: '湿垃圾',
@@ -205,4 +197,30 @@ var _itemNameMap = {
 
 String convertFromItemIdToName(int itemId) {
   return _itemNameMap[itemId];
+}
+
+var _itemEnNameMap = {
+  GARABGE_ITEM_NONE: '',
+  GARABGE_ITEM_EMPTY: '',
+  GARABGE_ITEM_RECYCLABLE: 'RECYCLABLEWASTE',
+  GARABGE_ITEM_HARMFUL: 'HAZARDOUSWASTE',
+  GARABGE_ITEM_WET: 'HOUSEHOLDFOODWASTE',
+  GARABGE_ITEM_DRY: 'RESIDUALWASTE',
+};
+
+String convertFromItemIdToEnName(int itemId) {
+  return _itemEnNameMap[itemId];
+}
+
+var _itemColorMap = {
+  GARABGE_ITEM_NONE: Colors.white,
+  GARABGE_ITEM_EMPTY: Colors.white,
+  GARABGE_ITEM_RECYCLABLE: Colors.blue,
+  GARABGE_ITEM_HARMFUL: Colors.red,
+  GARABGE_ITEM_WET: Colors.brown,
+  GARABGE_ITEM_DRY: Colors.black45,
+};
+
+Color convertFromItemIdToColor(int itemId) {
+  return _itemColorMap[itemId];
 }
